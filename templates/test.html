@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}: Book{% endblock %}
+
+{% block main %}
+
+<!-- BOOK: Style Sheet -->
+<link href="/static/book-styles.css" rel="stylesheet" />
+
+
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<div class="ColourList" id="BodyColourList" style="display:block;">
+    <div id="progressbar"></div>
+    <section class="first2">
+        <h2>Creative scroll bar: Test1</h2>
+        <p class="change">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quam sint commodi amet porro voluptatum repellat eveniet illo magnam blanditiis nulla sunt earum, aperiam repellendus, pariatur rem eos magni maxime.</p>   
+    </section>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+      window.addEventListener('scroll', ()=> {
+		if(window.pageYOffset > 0){
+		document.body.style.background = "black"
+		document.querySelector(".first2").style.backgroundColor = "maroon"
+document.querySelector(".change").style.color = "white"
+		}
+		else{
+		document.querySelector(".first2").style.backgroundColor = "black"
+		document.querySelector(".change").style.color = "white"
+		}
+	  });
+        let progress = document.getElementById('progressbar');
+        let zeeshan = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function(){
+             let progressHeight = (window.pageYOffset / zeeshan) * 104 + "%";
+            progress.style.height = progressHeight;
+    
+        }
+    </script>
+
+{% endblock %}

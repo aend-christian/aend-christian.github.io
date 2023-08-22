@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block title %}: Selection{% endblock %}
+
+    <!-- jsPDF library -->
+    <script src="js/jsPDF/dist/jspdf.umd.js"></script>
+    <!-- html2canvas library -->
+    <script src="js/html2canvas.min.js"></script>
+
+{% block main %}
+
+<head>
+    <link href="/static/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/static/indexstyles.css" rel="stylesheet" />
+    <link href="/static/visualiser-styles.css" rel="stylesheet" />
+    <link href="/static/book-styles.css" rel="stylesheet" />
+    
+</head>
+
+
+<body onload="load()">
+
+<script>
+    function load() {
+        var bodydiv = document.getElementById('body-div');
+        var bodyhex = document.getElementById("bodyhex").value;
+        bodydiv.style.backgroundColor = bodyhex;
+
+
+        var trimdiv = document.getElementById('trim-div');
+        var trimhex = document.getElementById("trimhex").value;
+        trimdiv.style.backgroundColor = trimhex;
+
+
+        var FDdiv = document.getElementById('FD-div');
+        var FDhex = document.getElementById("FDhex").value;
+        FDdiv.style.backgroundColor = FDhex;
+
+        var GarDiv = document.getElementById('Gar-div');
+        var GarHex = document.getElementById("GarHex").value;
+        GarDiv.style.backgroundColor = GarHex;
+    }
+</script>
+
+<div class="heading-container">
+    <h2>My Selection</h2>
+    <p>Click the the save button to download the selection.</p>
+</div>
+<div class="ColourList-save">
+    <div id="content">
+        <div>
+            <h3>Body</h3>
+            <div class="chip_selection" id="body-div"></div>
+            <div class="chip_selection_title"><p>{{ body }}</p></div>
+            <div style="display:none">
+                <input id="bodyhex" value="{{ bodyhex }}">
+            </div>
+        </div>
+            
+        <div>
+            <h3>Trim</h3>
+            <div class="chip_selection" id="trim-div"></div>
+            <div class="chip_selection_title"><p>{{ trim }}</p></div>
+            <div style="display:none">
+                <input id="trimhex" value="{{ trimhex }}">
+            </div>
+        </div>
+
+        <div>
+            <h3>Front Door</h3>
+            <div class="chip_selection" id="FD-div"></div>
+            <div class="chip_selection_title"><p>{{ frontDoor }}</p></div>
+            <div style="display:none">
+                <input id="FDhex" value="{{ fronthex }}">
+            </div>
+
+        <div>
+            <h3>Garage</h3>
+            <div class="chip_selection" id="Gar-div"></div>
+            <div class="chip_selection_title"><p>{{ garage }}</p></div>
+            <div style="display:none">
+                <input id="GarHex" value="{{ garagehex }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <div class="button" id="saveme" type="button" onclick="window.print()">Print</div>
+    </div> 
+</div>
+</body>
+
+{% endblock %}
+ 
+
+

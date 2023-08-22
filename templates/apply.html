@@ -1,0 +1,271 @@
+{% extends "layout.html" %}
+
+{% block title %}: Apply{% endblock %}
+
+{% block main %}
+
+<head>
+    <link href="/static/indexstyles.css" rel="stylesheet" />
+    <link href="/static/form-styles.css" rel="stylesheet" />
+</head>
+
+<body onload="load()">
+
+    <script>
+        function load() {
+            var bodydiv = document.getElementById('body-chip');
+            var bodyhex = document.getElementById("bodyhex").value;
+            bodydiv.style.backgroundColor = bodyhex;
+    
+    
+            var trimdiv = document.getElementById('trim-chip');
+            var trimhex = document.getElementById("trimhex").value;
+            trimdiv.style.backgroundColor = trimhex;
+    
+    
+            var FDdiv = document.getElementById('door-chip');
+            var FDhex = document.getElementById("FDhex").value;
+            FDdiv.style.backgroundColor = FDhex;
+    
+            var GarDiv = document.getElementById('garage-chip');
+            var GarHex = document.getElementById("GarHex").value;
+            GarDiv.style.backgroundColor = GarHex;
+        }
+    </script>
+
+<div class="heading-container">
+    <h1>Apply</h1>
+    <p>Complete the application form for approval to repaint your home.</p>
+</div>
+
+<!-- Application Form -->
+<div class="wrapper">
+        <!-- RIGHT: FORM -->
+        <form>
+            <div class="box b">
+                <!-- (1) E-Mail -->
+                <div class="form-step-div" id="step1" style="display: block">
+                    <div><h2>E-Mail</h2></div>
+                    <div>
+                        <input id="input" type="text" required />
+                        <label for="input" alt="E-Mail" placeholder="E-Mail"></label>
+                    </div>
+                </div>
+                <!-- (2) Details -->
+                <div class="form-step-div" id="step2" style="display:none;">
+                    <div><h2>Personal Details</h2></div>
+                    <div class="cont-side-by-side">
+                        <!-- First Name -->
+                        <div class="div-side-by-side">
+                            <input id="first-name" type="text" required />
+                            <label for="input" alt="First Name" placeholder="First Name"></label>
+                        </div>
+                        <!-- Surname -->
+                        <div class="div-side-by-side">
+                            <input id="surname" type="text" required />
+                            <label for="input" alt="Surname" placeholder="Surname"></label>
+                        </div>
+                    </div>
+                    <div> <!-- Phone -->
+                        <input id="phone-applicant" type="text" required />
+                        <label for="input" alt="Phone" placeholder="Phone"></label>
+                    </div>
+                    <div> <!-- Address -->
+                        <input id="unit" type="text" required />
+                        <label for="input" alt="Address" placeholder="Unit Address"></label>
+                    </div>
+                </div>
+    
+                <!-- (3) Contractor -->
+                <div class="form-step-div" id="step3" style="display:none;">
+                    <div><h2>Contractor Details</h2></div>
+                    
+                    <!-- Company Name -->
+                    <div>
+                        <input id="company-name" type="text" required />
+                        <label for="input" alt="company" placeholder="Company"></label>
+                    </div>
+    
+                    <div class="cont-side-by-side">
+                    <!-- Contractor First Name -->
+                        <div class="div-side-by-side">    
+                            <input id="contractor-first-name" type="text" required />
+                            <label for="input" alt="First Name" placeholder="First Name"></label>
+                        </div>
+                    
+                        <!-- Contractor Surname -->
+                        <div class="div-side-by-side">
+                            <input id="contractor-surname" type="text" required />
+                            <label for="input" alt="Surname" placeholder="Surname"></label>
+                        </div>
+                    </div>
+    
+                    <!-- Contractor Phone -->
+                    <div> 
+                        <input id="phone-contractor" type="text" required />
+                        <label for="input" alt="Phone" placeholder="Phone"></label>
+                    </div>
+                </div>
+    
+                <!-- (4) Submission Declaration -->
+                <div class="form-step-div" id="step4" style="display:none;">
+                    <div><h2>Declaration</h2></div>
+    
+                    <div class="checkbox-wrapper-48">
+                        <label><input type="checkbox" id="check1" required>All projects are to be completed within 90 days of start date unless otherwise specified.</label>
+                    </div>
+    
+                    <div class="checkbox-wrapper-48">
+                        <label for*="checkbox"><input type="checkbox" id="check2" required>If modification is not completed as approved, said approval can be revoked and modification will be required to beremoved by the owner at owner's expense.
+                        </label>
+                    </div>
+    
+                    <div class="checkbox-wrapper-48">
+                        <label><input type="checkbox" id="check3" required>Owner is responsible for payment of and repair to any 
+                            and all damage done to any portion of the Associations property.
+                        </label>
+                    </div>
+    
+                    <div class="checkbox-wrapper-48">
+                        <label><input type="checkbox" id="check4" required>Owner is responsible to complying with
+                            all current building codes and will have all necessary permits pulled for said project.
+                        </label>
+                    </div>
+    
+                    <div class="checkbox-wrapper-48">
+                        <label><input type="checkbox" id="check5" required>If owner's request is not approved, or work performed 
+                            is different than approved ARC request, owner understandsand agrees by signing below that
+                            owner may be subject to court action by the Association and that owner shall be responsible for all reasonable attorney fees and costs. Association may also elect to restore area back with the residence owner being responsible for the entire cost of restoration.
+                        </label>
+                    </div>
+                    <div class="button-container">
+                        <button class="button" id="form-submit" type="submit" disabled>Submit</button>
+                    </div>      
+                </div>
+                <!-- (5) Submission Confirmation -->
+                <div class="form-step-div" id="step5" style="display:none;">
+                    <div><h2>Success!</h2></div>
+                    <div><p>Thank you for your submission. We will contact you soon!</p></div>
+                </div>
+                <!-- BUTTON -->
+                <div class="button-container">
+                    <button class="button" id="continue" type="button" onclick="cont()">Begin
+                    </button>
+                    <button class="button" id="back" type="button" onclick="cont()" style="display:none;">Back
+                    </button>
+                </div>
+                            
+                    
+            </div>
+        </form>
+        
+    <!-- LEFT: SELECTION -->
+    <div class="box a">
+        <div><h2>Selection</h2></div>
+        <!-- BODY AND TRIM -->
+        <div class="grid-col-cont"> 
+            <!-- TITLES -->
+            <div class="grid-col-child black" id="body-title">Body</div>
+            <div class="grid-col-child white" id="trim-title">Trim</div>
+        </div>
+        <div class="grid-col-cont"> 
+            <!-- COLOUR CHIPS AND HEX CODES -->
+            <div class="grid-col-child green" id="body-chip">
+                <!-- Body Hex  -->
+                <div style="display:none"><input id="bodyhex" value="{{ bodyhex }}"></div>
+            </div>
+            <div class="grid-col-child blue" id="trim-chip">
+                <!-- Trim Hex  -->
+                <div style="display:none"><input id="trimhex" value="{{ trimhex }}"></div>
+            </div>
+        </div> 
+        <div class="grid-col-cont"> <!-- COLOUR NAMES -->
+            <div class="grid-col-child purple" id="body-name">{{ body }}</div>
+            <div class="grid-col-child yellow" id="trim-name">{{ trim }}</div>
+        </div>
+
+        <!-- FRONT AND GARAGE DOORS -->
+        <div class="grid-col-cont">
+            <div class="grid-col-child black" id="door-title">Door</div>
+            <div class="grid-col-child white" id="garage-title">Garage</div>
+        </div>
+        <div class="grid-col-cont"> <!-- COLOUR CHIPS AND HEX CODES -->
+            <div class="grid-col-child green" id="door-chip">
+                <!-- Front Door Hex  -->
+                <div style="display:none"><input id="FDhex" value="{{ fronthex }}"></div>  
+            </div>
+            <div class="grid-col-child blue" id="garage-chip">
+                <!-- Garage Door Hex  -->
+                <div style="display:none"><input id="GarHex" value="{{ garagehex }}"></div>
+            </div>
+        </div>
+        <div class="grid-col-cont"> <!-- COLOUR NAMES -->
+            <div class="grid-col-child purple" id="door-name" style="margin: top 0px;">{{ frontDoor }}</div>
+            <div class="grid-col-child yellow" id="garage-name">{{ garage }}</div>
+        </div>
+    </div>
+
+        
+
+<script>
+    function cont() {
+        var step1 = document.getElementById("step1");
+        var step2 = document.getElementById("step2");
+        var step3 = document.getElementById("step3");
+        var step4 = document.getElementById("step4");
+        var step5 = document.getElementById("step5");
+        var button = document.getElementById("continue");
+        var submit = document.getElementById("form-submit");
+
+
+        if (step1.style.display === "block") {
+            step1.style.display = "none";
+            step2.style.display = "block";
+            button.innerHTML = "Continue";
+        }
+
+        else if (step2.style.display === "block") {
+            step2.style.display = "none";
+            step3.style.display = "block";
+        }
+
+        else if (step3.style.display === "block") {
+            step3.style.display = "none";
+            step4.style.display = "block";
+            button.style.display = "none";
+        }
+
+        else if (step4.style.display === "block") {
+            step4.style.display = "none";
+            step5.style.display = "block";
+            submit.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    /* Access all checkboxes */
+    let checkbox = document.querySelectorAll('input[type="checkbox"]');
+
+    //let checkbox = document.getElementsByName("checkbox");
+    
+    /* Access Button */
+    let button = document.getElementById("form-submit");
+    
+    /* Iterate through number of checkboxes  */
+    for (let i = 0; i < checkbox.length; i++) {
+        /* Add event listener for change */
+        checkbox[i].addEventListener("change", () => {
+            button.disabled = false;
+            
+            // if any checkbox is unchecked, button remains disabled
+            for (let i = 0; i < checkbox.length; i++) {
+                if ( checkbox[i].checked == false )
+                button.disabled = true;
+            }
+         });
+      }
+   </script>
+</body>
+{% endblock %}
+ 

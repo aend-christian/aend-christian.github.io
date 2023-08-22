@@ -1,0 +1,273 @@
+body {
+  place-content: center;
+  margin: auto;
+}
+
+.wrapper {
+  background-color: white;
+  margin: auto;    
+  padding: 10px;
+  width: auto;
+  display: grid;
+  justify-content: center;
+  /* middle of div */
+  text-align: center;
+  max-width: 800px;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.box {
+  background-color: white;
+  border-radius: 5px;
+  color: #444;
+}
+  
+.a {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    height: 80vh;
+    background-color:white;
+  }
+  
+  .b {
+    grid-column: 2 / 1;
+    grid-row: 1;
+  } 
+
+/* RIGHT SIDE: CHOSEN COLOURS */
+.grid-col-cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  justify-content: center;
+}
+
+.black, .white { /* grid heading divs */
+  width: 100%;
+  height: 20px;
+  margin-top: 10px;
+  bottom: 0;
+  display: inline-block;
+  color: rgb(2, 2, 2);
+  box-shadow: rgba(15, 15, 151, 0.25) 0px 3px 6px -1px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  margin-bottom: 0px;
+}
+
+.green, .blue { /* colour chips */
+  width: 100%;
+  height: 100px;
+  margin-top: 0px;
+  display: inline-block;
+  color: rgb(21, 36, 7);
+}
+
+.green {
+  background-color: rgb(13, 70, 61);
+}
+
+.blue {
+  background-color: navy;
+}
+
+.purple, .yellow { /* colour names */
+  width: 100%;
+  height: 40px; 
+  margin-top: 0px;
+  /*margin-bottom: 5px;*/
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  font-weight: 300;
+  background: linear-gradient(to right, 
+    red , blue, purple, rgb(27, 130, 91), orange);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: none;
+  box-shadow: rgba(15, 15, 151, 0.25) 0px 3px 6px -1px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.black, .blue, .green, .yellow, .purple, .white {
+  min-width: 70px;
+  max-width: 150px;
+}
+
+/* LEFT SIDE: INPUT FORM */
+
+.form-step-div {
+  margin-top: 5px;
+} 
+
+/* SIDE BY SIDE INPUT */
+.cont-side-by-side {                       /* Parent Container (Wrapper) */
+  display:flex;
+}
+
+.div-side-by-side {                       /*       Child Container      */
+  min-width: 50%;
+  flex: 1;
+  padding: 0px;
+  text-align: center;
+  color: white;
+}
+
+#first-name, #surname,                    /*            DIV IDs         */
+  #contractor-first-name, #contractor-surname {         
+    min-width: 100%;
+}
+
+#first-name {
+  margin-right: 20px;
+}
+
+#phone-applicant, #unit, #phone-contractor, #company-name {       /*  Match side-by-side cont width */
+    min-width: 100%;
+}
+
+/* Check Boxes */
+.check-container {
+  margin-top: 10px;
+  align-items: center;
+  line-height: normal;
+  margin: auto;
+  max-width: 800px;
+  margin-bottom: 10px;
+}
+
+.checkbox-wrapper-48 { /* adapted from https://getcssscan.com/css-checkboxes-examples STYLE #48 */
+  --gray: #636e72;
+  --very-light-gray: #eee;
+  --light-gray: #9098A9;
+  --x-light-gray: #dfe6e9;
+  --gradient: linear-gradient(       
+      -225deg,
+      #231557 0%,
+      #44107a 29%,
+      #ff1361 67%,
+      #fff800 100%
+      );
+}
+
+.checkbox-wrapper-48 label {
+  padding-top: 10px;
+  padding-left: 15px;
+  cursor: pointer;
+  align-items: baseline;
+  font-size: 12px;
+  color: #0b1806;
+  text-align: left;
+  font-weight: 300;
+}
+
+.checkbox-wrapper-48 label:hover {
+  font-weight: normal;
+  color: #44107a;
+}
+
+/* CORE STYLES */
+.checkbox-wrapper-48 input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: .61em;
+  height: .61em;            
+  font: inherit;
+  border: 0.1em solid var(--light-gray);
+  margin-bottom: -0.125em;
+  margin-right: 5px;
+}
+.checkbox-wrapper-48 input[type=checkbox] {
+  border-radius: 5.25em;
+}
+
+.checkbox-wrapper-48 input:checked {
+  border-color: transparent;
+  background: var(--gradient) border-box;
+  box-shadow: 0 0 0 0.1em inset #fff;
+}
+
+.checkbox-wrapper-48 input:not(:checked):hover {
+  border-color: transparent;
+  background: linear-gradient(#fff, #fff) padding-box, var(--gradient) border-box;
+}
+
+
+/* Adaptive Placeholder, adapted from https://codepen.io/jasonbecker/pen/wdyLym */
+input[type="text"] + label[placeholder]:before {
+    content: attr(placeholder);
+    display: inline-block;
+    margin: 0 calc(0.5em + 2px);
+    padding: 0px;
+    /* Placeholder colour before typing*/
+    color: rgb(140, 140, 140);
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+input[type="text"] {
+  margin: 0 0 1em;
+  margin-top: 5px;
+  width: 50%;
+  max-width: 300px;
+  box-sizing: border-box;
+  height: calc(3em + 2px);
+  padding: 6px;
+  border: 1px solid purple;
+  border-radius: 3px;
+  
+  /* Completed input colour: */
+  color: purple;
+  background: #fff;
+    font-size: 12px;
+    line-height: 1.5px;
+  resize: none;
+  outline: none;
+  display: inline-block;
+}
+
+/* Border on click */
+input[type="text"]:focus {
+    border-color: rgb(162, 38, 162);
+    /* Colour on type (added colour gradient) */
+    background: linear-gradient(to right, 
+        red , blue, purple, yellow, orange);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: none;
+}
+
+/* UNSURE */
+input[type="text"]:focus + label[placeholder]:before {
+    color: #1017e8;
+}
+
+/* Placeholder text and border on input and valid */
+input[type="text"]:focus + label[placeholder]:before, input[type="text"]:valid + label[placeholder]:before {
+    transition-duration: .2s;
+    transform: translate(0, -1.6em) scale(0.9, 0.9);	
+    font-weight: 200;
+    color: rgb(210, 64, 89);
+}
+  
+/* Border colour once typing */
+input[type="text"]:valid { 
+    border-color: rgba(136, 42, 160, 0.885);
+}
+
+/* Label font colour once typing */
+input[type="text"]:valid + label[placeholder]:before {
+    color: purple;
+    font-weight: 400;
+}
+
+input[type="text"] + label[placeholder] {
+    display: block;	
+    pointer-events: none;
+    line-height: 1.25em;
+    margin-top: calc(-3em - 2px);
+    margin-bottom: calc((3em - 1em) + 2px);
+}

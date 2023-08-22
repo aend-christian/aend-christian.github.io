@@ -1,0 +1,270 @@
+.SelectMenu-Container {
+    margin: auto;
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12;
+    font-weight: 500;
+    position:relative;
+    padding-bottom: 10px;
+    animation: myselct 1s;
+    animation-fill-mode: forwards;
+    bottom: -1000px;
+    width: max-content;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.SelectMenu-Container h1 {
+    font-size: 25px;
+    animation: textclip 4s linear;
+    animation-delay: 1.5s;
+}
+
+/* Select Menu: Colours */
+#selectBody, #selectTrim, #selectFrontDoor, #selectGarage, #selectRoof {
+    text-align: center;
+    font-weight: 100;
+    background-color: white;
+    margin-top: 5px;
+}
+
+/* Select Menu: Animation */
+@keyframes myselct {
+    from {bottom: -1000px;}
+    to {bottom: 00px; background-color: transparent;}
+}
+
+/* House Styling */
+.housecontainer {
+    position:relative;
+    width: max-content;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    scale: 70%;
+}
+
+.roofcontainer {
+    margin-top: -130px;
+    position: relative;
+    display: flex;
+    width: 420px;
+}
+
+.housespan {
+    position:relative;
+    display: flex;
+    padding-bottom: 10px;
+    animation: mymove 3s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    top: -1000px;
+}
+
+@keyframes mymove {
+    from {top: -1000px;}
+    to {top: 00px; background-color: transparent;}
+}
+
+.roof {
+    z-index: 1;
+    position: relative;
+    top: 110px;
+    margin-left: 0px;
+    width: 290px;
+    height: 120px;
+    transform: skew(-45deg);
+    background: #624027;
+}
+
+.roof2 {
+    z-index: 99;
+    top: 193px;
+    width: 0;
+    height: 0;
+    margin-left: -394px;
+    border-left: 81px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 80px solid #624027;
+    position:relative;
+}
+
+.roof3 {
+    z-index: 7;
+    margin-left: -80px;
+    top: 185px;
+    width: 105px;
+    height: 60px;
+    transform: rotate(45deg);
+    background: #694226;
+    position:relative;
+}
+
+.roof4 {
+    z-index: 10;
+    top: 46px;
+    margin-left: 176px;
+    position: relative;
+    flex: 1;
+    width: 0;
+    height: 0;
+    border-left: 115px solid transparent;
+    border-right: 115px solid transparent;
+    border-bottom: 106px solid #624027;
+}
+
+.house {
+    margin-left: 10px;
+    width: 434px;
+    height: 91px;
+    background-color: #DEDDD1;
+    position: relative;
+}
+.footpath {
+    flex: 1;
+    margin-left: 35px;
+    top: 50px;
+    z-index: 0;
+    width: 365px;
+    height: 100px;
+    transform: skew(-45deg);
+    background: rgba(226, 46, 46, 0.645);
+    position: relative;
+}
+
+.lawn {
+    margin-left: -125px;
+    top: -14px;
+    z-index: 90;
+    width: 135px;
+    height: 50px;
+    transform: skew(-45deg);
+    background: green;
+    position: relative;
+}
+
+.extensionSide {
+    margin-left: 10px;
+    top: 90px;
+    width: 50px;
+    height: 50px;
+    transform: skew(-45deg);
+    background: #DEDDD1;
+    border-right: 1px solid black;
+    position: absolute;
+}
+
+.extension {
+    margin-left: -100px;
+    top: 40px;
+    width: 135px;
+    height: 100px;
+    background-color: #DEDDD1;
+    position: absolute;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.window {
+    margin-left: -50px;
+    position: relative;
+    top: 80px;
+    width: 30px;
+    height: 40px;
+    border: 2px solid #57534C;
+    background-color: lightblue;
+}
+
+.door {
+    flex: 9;
+    margin-left: 115px;
+    position: absolute;
+    top: 50px;
+    width: 30px;
+    height: 40px;
+    border: 3px solid #57534C;
+    border-bottom: transparent;
+    background-color: #2F2F30;
+}
+
+.transome {
+    margin-left: 115px;
+    top: -105px;
+    height: 14px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 5rem 5rem 0 0;
+    background-color: lightblue;
+    position: relative;
+}
+
+.garage-front-single {
+    margin-left: 170px;
+    top: 42px;
+    width: 90px;
+    height: 75px;
+    background-color: #DEDDD1;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    z-index: 9;
+    position: absolute;       
+}
+
+  .garage-single {
+    z-index: 9;
+    margin-left: 182px;
+    position: absolute;
+    top: 67px;
+    width: 60px;
+    height: 50px;
+    border: 4px solid #57534C;
+    background-color: #56433B;
+    border-bottom: transparent;
+}
+
+.garage-front-double {
+    z-index: 9;
+    margin-left: 250px;
+    top: 43px;
+    width: 140px;
+    height: 90px;
+    background-color: #DEDDD1;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    position: absolute;
+}
+
+.garage-roof-side {
+    margin-left: 324px;
+    top: -110px;
+    width: 81px;
+    height: 153px;
+    transform: rotate(-45deg);
+    background: #694226;
+    position:absolute;
+}
+
+.garage-side-double {
+    margin-left: 354px;
+    top: 89px;
+    width: 59px;
+    height: 43px;
+    transform: skew(-45deg);
+    background-color: #DEDDD1;
+    position: absolute;
+  }
+
+  .garage-double {
+    z-index: 9;
+    margin-left: 267px;
+    position: absolute;
+    top: 73px;
+    width: 105px;
+    height: 60px;
+    border: 4px solid #57534C;
+    border-bottom: transparent;
+    background-color: #56433B;
+}

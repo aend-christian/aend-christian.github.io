@@ -1,0 +1,459 @@
+{% extends "layout.html" %}
+
+{% block title %}: Visualiser {% endblock %}
+
+{% block main %}
+<head>
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <!-- VISUALISER: Style Sheet -->
+    <link href="/static/visualiser-styles.css" rel="stylesheet" />
+</head>  
+
+<div class="heading-container"><h1>Visualise Colours</h1></div>
+<p>Test colour combinations.</p>
+<span class="housespan" name="myhouse">
+    <!-- House -->
+    <div class="housecontainer">
+        <div class="roofcontainer">
+            <div class="roof" id="roof"></div>
+            <div class="roof2" id="roof2"></div>
+            <div class="roof3" id="roof3"></div>
+        </div>
+        <div class="roof4" id="roof4"></div>
+
+        <div class="house" id="house">
+            <div class="extensionSide" id="extensionSide"></div>
+            <div class="extension" id="extension"></div>
+            <div class="window" id="window"></div>
+            <div class="frontdoor">
+                <div class="door" id="frontdoor"></div>
+                <div class="footpath"></div>
+                <div class="transome"></div>
+                <div class="lawn"></div>
+                <div class="garage-front-single" id="garage-front-single"></div>
+                <div class="garage-front-double" id="garage-front-double"></div>
+                <div class="garage-side-double" id="garage-side-double"></div>
+                <div class="garage-roof-side" id="roof5"></div>
+            </div>
+            <div class="garage-single" id="garage-single"></div>
+            <div class="garage-double" id="garage-double"></div>
+        </div>
+    </div>
+</span>
+
+<!-- COLOUR SELECTION FORM -->
+<div class="SelectMenu-Container" id="SetRoof">
+    <div>
+        <h1>Choose your roof colour:</h1>
+        <p>Choose the roof colour closest to yours.</p>
+    </div>
+    <!-- ROOF COLOURS -->
+    <select class="form-select form-select-sm" id="selectRoof" onchange="changeRoof()">
+        <option selected>Dark Brown</option>
+        <option>Light Grey</option>
+        <option>Dark Grey</option>
+        <option>Light Brown</option>
+    </select>
+    <div class="button-container">
+        <button class="button" id="next" type="button" onclick="next()">Next</button>
+    </div>
+</div>
+<script>
+    function next() {
+
+        var SetRoof = document.getElementById("SetRoof");
+        var colours = document.getElementById("colour-selection");
+        var saveselection = document.getElementById("save");
+
+        if (colours.style.display === "none") {
+            colours.style.display = "block";
+            SetRoof.style.display = "none";
+        }
+        else {
+            colours.style.display = "none";
+            saveselection.style.display = "none";
+        }
+    }
+</script>
+
+<div class="SelectMenu-Container" id="colour-selection" style="display:none;">
+    <form action="/visualiser" method="POST">
+    <!-- BODY COLOURS -->
+    <select class="form-select form-select-sm" id="selectBody"  name="selectBody" onchange="changeBody(); checkDropdowns();">
+        <option value="" disabled selected>Body</option>
+        <option value="#D1C7B8" class="D1C7B8">Accessible Beige</option>
+        <option name="Annew" value="#BFB6AA" >Anew Gray</option>
+        <option value="#BCB099">Avenue Tan</option>
+        <option value="#C0B2A2">Balanced Beige</option>
+        <option value="#BEC3BB">Comfort Gray</option>
+        <option value="#B4B9B9">Colonial Revival Gray</option>            
+        <option value="#EDD6B1">Concord Buff</option>
+        <option value="#A0B3BC">Dockside Blue</option>
+        <option value="#ACA79E">Dorian Gray</option>
+        <option value="#908A83">Dovetail</option>
+        <option value="#9AABAB">Dutch Tile Blue</option>
+        <option value="#D8CFBE">Grecian Ivory</option>
+        <option value="#A5A9A8">Gris</option>
+        <option value="#ADB5B9">Jubilee</option>
+        <option value="#D7C5AE">Killim Beige</option>
+        <option value="#C3C1BC">Knitting Needles</option>
+        <option value="#979FA5">Let it Rain</option>
+        <option value="#C2C0BB">Light French Gray</option>
+        <option value="#BAB9B6">March Wind</option>
+        <option value="#BCB7AD">Mindful Gray</option>
+        <option value="#A8AEB1">Morning Fog</option>
+        <option value="#EADFC9">Muslin</option>
+        <option value="#C7B198">Nomadic Desert</option>
+        <option value="#DEDDD1">Nonchalant White</option>
+        <option value="#B7AB9F">Perfect Greige</option>
+        <option value="#CCC9C0">Repose Gray</option>
+        <option value="#B8BEBE">Samovar Silver</option>
+        <option value="#CDD2CA">Sea Salt</option>
+        <option value="#B0B8B2">Silvermist</option>
+        <option value="#D9CFBA">Wool Skein</option>
+        <option value="#CAC9C6">Zircon</option>
+    </select>
+ <!-- TRIM COLOURS -->
+    <select class="form-select form-select-sm" id="selectTrim" name="selectTrim" onchange="changeTrim(); checkDropdowns();">
+        <option value="" disabled selected>Trim</option>
+        <option value="#EDEAE0">Alabaster</option>
+        <option value="#EFE8DB">Creamy</option>
+        <option value="#F0EADC">Dover White</option>
+        <option value="#E2DED8">Eider White</option>
+        <option value="#EEEFEA">Extra White</option>
+        <option value="#DCDDD8">Fleur de Sel</option>
+        <option value="#F0ECE2">Greek Villa</option>
+        <option value="#F7F7F1">High Reflective White</option>
+        <option value="#E3E4E1">Ice Cube</option>
+        <option value="#E3DED7">Incredible White</option>
+        <option value="#DEDFDC">Nebulous White</option>
+        <option value="#E2E0D6">Nuance</option>
+        <option value="#E5E2DA">Origami White</option>
+        <option value="#A0998F">Pavestone</option>
+        <option value="#E8E3D9">Pearly White</option>
+        <option value="#EDECE6">Pure White</option>
+        <option value="#DDE2E0">Quicksilver</option>
+        <option value="#D3D5D3">Reflection</option>
+        <option value="#CCC9C0">Repose Gray</option>
+        <option value="#E6DFD3">Shoji White</option>
+        <option value="#DCE7E8">Sky High</option>
+        <option value="#EDEAE5">Snowbound</option>
+        <option value="#E4E4DD">Spare White</option>
+        <option value="#57534C">Thunder Gray</option>
+        <option value="#DED8CF">Windfresh White</option>
+    </select>
+    
+<!-- FRONT DOOR COLOURS -->
+    <select class="form-select form-select-sm" id="selectFrontDoor" name="selectFrontDoor" onchange="changeFrontDoor(); checkDropdowns();">
+        <option value="" disabled selected>Front Door</option>
+        <option value="#A3C0BD">Aquaverde</option>
+        <option value="#7F8266">Artichoke</option>
+        <option value="#9A815E">Artifact</option>
+        <option value="#C0B2A2">Balanced Beige</option>
+        <option value="#4F4842">Black Fox</option>
+        <option value="#63333E">Burgundy</option>
+        <option value="#7EA298">Composed</option>
+        <option value="#175A6C">Connor’s Lakefront</option>
+        <option value="#753531">Crabby Apple</option>
+        <option value="#376167">Deep Sea Dive</option>
+        <option value="#ACA79E">Dorian Gray</option>
+        <option value="#8CAEAB">Drizzle</option>
+        <option value="#723941">Fine Wine</option>
+        <option value="#786E70">Grapy</option>
+        <option value="#8B8372">Hardware</option>
+        <option value="#666D69">Homburg Gray</option>
+        <option value="#283849">In the Navy</option>
+        <option value="#4E7287">Inky Blue</option>
+        <option value="#01455E">Loyal Blue</option>
+        <option value="#2F3D4C">Naval</option>
+        <option value="#546670">Needlepoint Navy</option>
+        <option value="#C7B198">Nomadic Desert</option>
+        <option value="#56433B">Otter</option>
+        <option value="#586168">Outerspace</option>
+        <option value="#8095A0">Poolhouse</option>
+        <option value="#ADA5A5">Quest Gray</option>
+        <option value="#016367">Really Teal</option>
+        <option value="#8E3738">Red Bay</option>
+        <option value="#7BB1B2">Reflecting Pool</option>
+        <option value="#607D84">Refuge</option>
+        <option value="#7A8076">Retreat</option>
+        <option value="#5D7274">Riverway</option>
+        <option value="#5E706A">Rocky River</option>
+        <option value="#803532">Salute</option>
+        <option value="#3E4B54">Sea Serpent</option>
+        <option value="#314D58">Seaworthy</option>
+        <option value="#716354">Smokehouse</option>
+        <option value="#577C88">St Bart’s</option>
+        <option value="#6D817B">Studio Blue Green</option>
+        <option value="#C2CFCF">Tradewind</option>
+        <option value="#7C9AA0">Tranquil Aqua</option>
+        <option value="#2F2F30">Tricorn Black</option>
+    </select>
+    
+<!-- GARAGE-DOOR COLOURS -->
+    <select class="form-select form-select-sm" id="selectGarage" name="selectGarage" onchange="changeGarageDoors(); checkDropdowns();">
+        <option value="" disabled selected>Garage Door</option>
+        <option value="#EDEAE0">Alabaster</option>
+        <option value="#C0B2A2">Balanced Beige</option>
+        <option value="#4F4842">Black Fox</option>
+        <option value="#EFE8DB">Creamy</option>
+        <option value="#ACA79E">Dorian Gray</option>
+        <option value="#F0EADC">Dover White</option>
+        <option value="#E2DED8">Eider White</option>
+        <option value="#EEEFEA">Extra White</option>
+        <option value="#DCDDD8">Fleur de Sel</option>
+        <option value="#F0ECE2">Greek Villa</option>
+        <option value="#F7F7F1">High Reflective White</option>
+        <option value="#E3E4E1">Ice Cube</option>
+        <option value="#E3DED7">Incredible White</option>
+        <option value="#DEDFDC">Nebulous White</option>
+        <option value="#C7B198">Nomadic Desert</option>
+        <option value="#E2E0D6">Nuance</option>
+        <option value="#E5E2DA">Origami White</option>
+        <option value="#56433B">Otter</option>
+        <option value="#A0998F">Pavestone</option>
+        <option value="#E8E3D9">Pearly White</option>
+        <option value="#EDECE6">Pure White</option>
+        <option value="#DDE2E0">Quicksilver</option>
+        <option value="#D3D5D3">Reflection</option>
+        <option value="#CCC9C0">Repose Gray</option>
+        <option value="#E6DFD3">Shoji White</option>
+        <option value="#DCE7E8">Sky High</option>
+        <option value="#716354">Smokehouse</option>
+        <option value="#EDEAE5">Snowbound</option>
+        <option value="#E4E4DD">Spare White</option>
+        <option value="#57534C">Thunder Gray</option>
+        <option value="#DED8CF">Windfresh White</option>
+    </select>
+<div>
+        <div>
+            <input type="text" name="mybody" id="mybody" value="" style="display: none;">
+            <input type="text" name="mytrim" id="mytrim" value="" style="display: none;">
+            <input type="text" name="myfrontd" id="myfrontd" value="" style="display: none;">
+            <input type="text" name="mygarage" id="mygarage" value="" style="display: none;">
+        </div>
+        <div class="button-container">
+            <button class="button" id="save" type="submit" value="Save" name="action" style="display: none;">Save Selection</button>
+        </div>
+        <div class="button-container">
+                <button class="button" id="apply" type="submit" value="Apply" name="action" style="display: none;">Apply</button>
+            </form>
+        </div>
+    </form>
+</div>
+
+<script>
+    function checkDropdowns() {
+        const dropdowns = document.querySelectorAll('.form-select');
+        const SubmitButton = document.getElementById('apply');
+        const SaveButton = document.getElementById('save');
+
+        for (const dropdown of dropdowns) {
+          if (dropdown.value === '') {
+            SaveButton.style.display = 'none';
+            SubmitButton.style.display = 'none';
+            return;
+          }
+        }
+        SaveButton.style.display = 'block';
+        SubmitButton.style.display = 'block';
+    }
+
+
+// Function: CHANGE ROOF COLOUR //
+function changeRoof() {
+    // Get Roof Elements //
+    var roof = document.getElementById("roof");
+    var roof2 = document.getElementById("roof2");
+    var roof3 = document.getElementById("roof3");
+    var roof4 = document.getElementById("roof4");
+    var roof5 = document.getElementById("roof5");
+
+    // Get Selection //
+    var selectRoof = document.getElementById("selectRoof");
+    var selectedRoof = selectRoof.options[selectRoof.selectedIndex].text;
+
+    // Set Roof Colours //
+
+    if ((selectedRoof) == "Light Brown") {
+        // Set dropdown Background //
+        selectRoof.style.backgroundColor = "#9A7A56"; 
+        selectRoof.style.color = "white"; 
+        // Set Roof //
+        roof.style.backgroundColor = "#9A7A56";
+        roof2.style.borderBottom = "80px solid #9A7A56";
+        roof3.style.backgroundColor = "#9F8360";
+        roof4.style.borderBottom = "106px solid #9A7A56";
+        roof5.style.background = "#9F8360";
+    }
+
+    if ((selectedRoof) == "Light Grey") {
+        // Set dropdown Background //
+        selectRoof.style.backgroundColor = "#BABABA"; 
+        selectRoof.style.color = "white"; 
+        // Set Roof //
+        roof.style.backgroundColor = "#BABABA";
+        roof2.style.borderBottom = "80px solid #BABABA";
+        roof3.style.backgroundColor = "#C8C8C8";
+        roof4.style.borderBottom = "106px solid #BABABA";
+        roof5.style.background = "#C8C8C8";
+    }
+
+    if ((selectedRoof) == "Dark Grey") {
+        // Set dropdown Background //
+        selectRoof.style.backgroundColor = "#5E5E5E"; 
+        selectRoof.style.color = "white"; 
+        // Set Roof //
+        roof.style.backgroundColor = "#5E5E5E";
+        roof2.style.borderBottom = "80px solid #5E5E5E";
+        roof3.style.backgroundColor = "#727272";
+        roof4.style.borderBottom = "106px solid #5E5E5E";
+        roof5.style.background = "#727272";
+    }
+
+    if ((selectedRoof) == "Dark Brown") {
+        // Set dropdown Background //
+        selectRoof.style.backgroundColor = "#624027"; 
+        selectRoof.style.color = "white"; 
+        // Set Roof //
+        roof.style.backgroundColor = "#624027";
+        roof2.style.borderBottom = "80px solid #624027";
+        roof3.style.backgroundColor = "#694226";
+        roof4.style.borderBottom = "106px solid #624027";
+        roof5.style.background = "#694226";
+    }
+}
+    // Function: CHANGE BODY COLOUR //
+    function changeBody() {
+        // Get house elements //
+        var house = document.getElementById("house");
+        var extension = document.getElementById("extension");
+        var extensionSide = document.getElementById("extensionSide");
+        var garageSideDouble = document.getElementById("garage-side-double");
+        var garageFrontSingle = document.getElementById("garage-front-single");
+        var garageFrontDouble = document.getElementById("garage-front-double");
+
+        // Get selection //
+        var selectBody = document.getElementById("selectBody");
+        var selectedBody =
+            selectBody.options[selectBody.selectedIndex].value;
+
+        // Make value available to move via submit //
+        var selectedBodyName = selectBody.options[selectBody.selectedIndex].text;
+        var mybody = document.getElementById("mybody");
+        mybody.value = selectedBodyName;
+
+        // Set colour //
+        house.style.backgroundColor = selectedBody;
+        extension.style.backgroundColor = selectedBody;
+        extensionSide.style.backgroundColor = selectedBody;
+        garageSideDouble.style.backgroundColor = selectedBody;
+        garageFrontSingle.style.backgroundColor = selectedBody;
+        garageFrontDouble.style.backgroundColor = selectedBody;
+        selectBody.style.color = "white"; 
+        var saveBT = document.getElementById("save");
+
+
+        //Set Dropdown Colour to Selection//
+        selectBody.style.backgroundColor = selectedBody;
+        if ((selectBody.options[selectBody.selectedIndex].text) == "Body") {
+            selectBody.style.backgroundColor = "white";
+        }
+    }
+    // Function: CHANGE TRIM COLOURS //
+    function changeTrim() {
+        // Get trim elements //
+        var window = document.getElementById("window");
+        var garageSingle = document.getElementById("garage-single");
+        var garageDouble = document.getElementById("garage-double");
+        var frontdoor = document.getElementById("frontdoor");
+
+        // Get user selection //
+        var selectTrim = document.getElementById("selectTrim");
+        var selectedTrim =
+            selectTrim.options[selectTrim.selectedIndex].value;
+
+        // Make value available to move via submit //
+        var selectedTrimName = selectTrim.options[selectTrim.selectedIndex].text;
+        var mytrim = document.getElementById("mytrim");
+        mytrim.value = selectedTrimName;
+    
+        // Set colour //
+        window.style.borderColor = selectedTrim;
+        garageSingle.style.borderColor = selectedTrim;
+        garageDouble.style.borderColor = selectedTrim;
+        frontdoor.style.borderColor = selectedTrim;
+        selectTrim.style.color = "white"; 
+
+        //Set Dropdown Colour to Selection//
+        selectTrim.style.backgroundColor = selectedTrim;
+        if ((selectTrim.options[selectTrim.selectedIndex].text) == "Trim") {
+            selectTrim.style.backgroundColor = "white";
+        }
+    }
+
+    // Function: Change FRONT DOOR //
+    function changeFrontDoor() {
+        var frontdoor = document.getElementById("frontdoor");
+
+        // Get user selection //
+        var selectFrontDoor = document.getElementById("selectFrontDoor");
+        var selectedFrontDoor = selectFrontDoor.options[selectFrontDoor.selectedIndex].value;
+        
+        // Make value available to move via submit //
+        var selectedfdoorName = selectFrontDoor.options[selectFrontDoor.selectedIndex].text;
+        var myfrontd = document.getElementById("myfrontd");
+        myfrontd.value = selectedfdoorName;
+            
+        // Set colour //
+        frontdoor.style.backgroundColor = selectedFrontDoor;
+        selectFrontDoor.style.color = "white"; 
+
+        //Set Dropdown Colour to Selection//
+        selectFrontDoor.style.backgroundColor = selectedFrontDoor;
+        if ((selectFrontDoor.options[selectFrontDoor.selectedIndex].text) == "Front Door") {
+            selectFrontDoor.style.backgroundColor = "white";
+        }
+    }
+
+// Function: Change GARAGE DOORS //
+function changeGarageDoors() {
+    // Get garage elements //
+    var garageSingle = document.getElementById("garage-single");
+    var garageDouble = document.getElementById("garage-double");
+    
+    // Get selection //
+    var selectGarage = document.getElementById("selectGarage");
+    var selectedGarage = selectGarage.options[selectGarage.selectedIndex].value;
+    
+    // Make value available to move via submit //
+    var selectedgdoorName = selectGarage.options[selectGarage.selectedIndex].text;
+    var mygarage = document.getElementById("mygarage");
+    mygarage.value = selectedgdoorName;
+
+    // Set colour //
+    garageSingle.style.backgroundColor = selectedGarage;
+    garageDouble.style.backgroundColor = selectedGarage;
+    selectGarage.style.color = "white"; 
+                
+    //Set Dropdown Colour to Selection//
+    selectGarage.style.backgroundColor = selectedGarage;
+    if ((selectGarage.options[selectGarage.selectedIndex].text) == "Garage Door") {
+        selectGarage.style.backgroundColor = "white";
+    }
+
+    //Button
+    var selectBody = document.getElementById("selectBody");
+    var selectTrim = document.getElementById("selectTrim");
+    var selectFrontDoor = document.getElementById("selectFrontDoor");
+    var selectGarage = document.getElementById("selectGarage");
+    var submitBT = document.getElementById("submit");
+    var saveBT = document.getElementById("save");
+}
+</script>
+</div>
+</body>
+</html>
+{% endblock %}

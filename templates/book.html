@@ -1,0 +1,714 @@
+{% extends "layout.html" %}
+
+{% block title %}: Book{% endblock %}
+
+{% block main %}
+
+<!-- BOOK: Style Sheet -->
+<link href="/static/book-styles.css" rel="stylesheet" />
+
+<script>
+    //Show & Hide Element //
+function showBody() {
+    var dropdown = document.getElementById("dropdownBody");
+
+    var body = document.getElementById("BodyColourList");
+    var trim = document.getElementById("TrimColourList");
+    var frontDoor = document.getElementById("FrontDoorColourList");
+    var garageDoor = document.getElementById("GarageDoorColourList");
+
+    if (body.style.display === "none") {
+        body.style.display = "block";
+        dropdown.style.backgroundImage = "linear-gradient(-225deg,#231557, #44107a, #ff1361, #fff800,)";
+        
+        dropdown.style.backgroundImage = "linear-gradient(-225deg, #231557, #44107a, #ff1361, #fff800)";
+        dropdown.style.color = "white";
+
+        if (trim.style.display === "block") {
+            trim.style.display = "none";
+            var trimDropdown = document.getElementById("dropdownTrim");
+            trimDropdown.style = "dropdown";
+        }
+
+        if (frontDoor.style.display === "block") {
+            frontDoor.style.display = "none";
+            var frontDropdown = document.getElementById("dropdownFront");
+            frontDropdown.style = "dropdown";
+        }
+        if (garageDoor.style.display === "block") {
+            garageDoor.style.display = "none";
+            var garDropdown = document.getElementById("dropdownGar");
+            garDropdown.style = "dropdown";
+        }
+    } 
+    else {
+        body.style.display = "none";
+        dropdown.style = "dropdown";
+    }
+}
+
+function showTrim() {
+    var dropdown = document.getElementById("dropdownTrim");
+
+    var trim = document.getElementById("TrimColourList");
+    var body = document.getElementById("BodyColourList");
+    var frontDoor = document.getElementById("FrontDoorColourList");
+    var garageDoor = document.getElementById("GarageDoorColourList");
+
+    if (trim.style.display === "none") {
+        trim.style.display = "block";
+        dropdown.style.backgroundImage = "linear-gradient(-225deg, #231557, #44107a, #ff1361, #fff800)";
+        dropdown.style.color = "white";
+
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            var bodyDropdown = document.getElementById("dropdownBody");
+            bodyDropdown.style = "dropdown";
+        }
+        if (frontDoor.style.display === "block") {
+            frontDoor.style.display = "none";
+            var frontDropdown = document.getElementById("dropdownFront");
+            frontDropdown.style = "dropdown";
+        }
+        if (garageDoor.style.display === "block") {
+            garageDoor.style.display = "none";
+            var garDropdown = document.getElementById("dropdownGar");
+            garDropdown.style = "dropdown";
+        } 
+    }
+    else {
+        trim.style.display = "none";
+        dropdown.style = "dropdown";
+    }
+}
+
+function showFRONTDOOR() {
+    var dropdown = document.getElementById("dropdownFront");
+
+    var frontDoor = document.getElementById("FrontDoorColourList");
+    var body = document.getElementById("BodyColourList");
+    var trim = document.getElementById("TrimColourList");
+    var garageDoor = document.getElementById("GarageDoorColourList");
+
+    if (frontDoor.style.display === "none") {
+        frontDoor.style.display = "block";
+        dropdown.style.backgroundImage = "linear-gradient(-225deg, #231557, #44107a, #ff1361, #fff800)";
+        dropdown.style.color = "white";
+
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            var bodyDropdown = document.getElementById("dropdownBody");
+            bodyDropdown.style = "dropdown";
+        }
+        if (trim.style.display === "block") {
+            trim.style.display = "none";
+            var trimDropdown = document.getElementById("dropdownTrim");
+            trimDropdown.style = "dropdown";
+        }
+        if (garageDoor.style.display === "block") {
+            garageDoor.style.display = "none";
+            var garDropdown = document.getElementById("dropdownGar");
+            garDropdown.style = "dropdown"
+        }
+    } 
+    else {
+        frontDoor.style.display = "none";
+        dropdown.style = "dropdown";
+    }
+}
+
+function showGARAGEDOOR() {
+    var dropdown = document.getElementById("dropdownGar");
+
+    var garageDoor = document.getElementById("GarageDoorColourList");
+    var body = document.getElementById("BodyColourList");
+    var trim = document.getElementById("TrimColourList");
+    var frontDoor = document.getElementById("FrontDoorColourList");
+
+    if (garageDoor.style.display === "none") {
+        garageDoor.style.display = "block";
+        dropdown.style.backgroundImage = "linear-gradient(-225deg, #231557, #44107a, #ff1361, #fff800)";
+        dropdown.style.color = "white";
+
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            var bodyDropdown = document.getElementById("dropdownBody");
+            bodyDropdown.style = "dropdown";
+        }
+        if (trim.style.display === "block") {
+            trim.style.display = "none";
+            var trimDropdown = document.getElementById("dropdownTrim");
+            trimDropdown.style = "dropdown";
+        }
+        if (frontDoor.style.display === "block") {
+            frontDoor.style.display = "none";
+            var frontDropdown = document.getElementById("dropdownFront");
+            frontDropdown.style = "dropdown";
+        }
+    }
+    else {
+        garageDoor.style.display = "none";
+        dropdown.style = "dropdown";
+    }
+}
+</script>
+
+<body>
+    <!-- Heading and Subtitle -->
+    <div class="heading-container"><h1>Explore Colours</h1></div>
+    <p>Click on the sections below to view available colours.</p>
+
+    <!-- BODY Dropdown-->
+    <div class="dropdown-container">
+        <div onclick="showBody()" class="dropdown" id="dropdownBody" type="button">Body <i class="bi bi-arrow-down" style="float:right; margin-right:10px;"></i></div>
+    </div>
+    <!-- BODY Hidden Element -->
+    
+    <div class="ColourList" id="BodyColourList" style="display:none;">
+
+        <div class="chip" id="chip" style="background-color: #D1C7B8">Accessible Beige
+            <div id="hover-content">SW 7036</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #BFB6AA">Anew Gray
+            <div id="hover-content">SW 7030</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #BCB099">Avenue Tan
+            <div id="hover-content">SW 7543</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C0B2A2">Balanced Beige
+            <div id="hover-content">SQ 7037</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #BEC3BB">Comfort Gray
+            <div id="hover-content">SW 6205</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #B4B9B9">Colonial Revival Gray
+            <div id="hover-content">SW 2832</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EDD6B1">Concord Buff
+            <div id="hover-content">SW 7684</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color:  #A0B3BC; color:white;">Dockside Blue
+            <div id="hover-content">SW 7601</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #ACA79E">Dorian Gray
+            <div id="hover-content">SQ 7017</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #908A83; color:white;">Dovetail
+            <div id="hover-content">SW 7018</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #9AABAB">Dutch Tile Blue
+            <div id="hover-content">SW 0031</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #D8CFBE">Grecian Ivory
+            <div id="hover-content">SW 7541</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #A5A9A8;">Gris
+            <div id="hover-content">SW 7659</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E4CEAC;">Ivoire
+            <div id="hover-content">SW 6127</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #ADB5B9;">Jubilee
+            <div id="hover-content">SW 6248</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #D7C5AE">Killim Beige
+            <div id="hover-content">SW 6106</div>
+        </div>
+        
+        <div class="chip" id="chip" style="background-color: #C3C1BC">Knitting Needles
+            <div id="hover-content">SW 7672</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C2C0BB">Light French Gray
+            <div id="hover-content">SW 0055</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #BAB9B6">March Wind
+            <div id="hover-content">SW 7668</div>
+        </div>
+        
+        <div class="chip" id="chip" style="background-color: #BCB7AD">Mindful Gray
+            <div id="hover-content">SW 7016</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #A8AEB1">Morning Fog
+            <div id="hover-content">SW 6255</div>
+        </div>
+        
+        <div class="chip" id="chip" style="background-color: #EADFC9">Muslin
+            <div id="hover-content">SW 6133</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C7B198">Nomadic Desert
+            <div id="hover-content">SW 6107</div>
+        </div>
+        
+        <div class="chip" id="chip" style="background-color: #DEDDD1">Nonchalant White
+            <div id="hover-content">SW 6161</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #B7AB9F">Perfect Greige
+            <div id="hover-content">SW 6073</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #CCC9C0">Repose Gray
+            <div id="hover-content">SW 7015</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #B8BEBE">Samovar Silver
+            <div id="hover-content">SW 6233</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #CDD2CA">Sea Salt
+            <div id="hover-content">SW 6204</div>
+        </div>
+        
+        <div class="chip" id="chip" style="background-color: #B0B8B2">Silvermist
+            <div id="hover-content">SW 7621</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #D9CFBA">Wool Skein
+            <div id="hover-content">SW 6148</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #CAC9C6">Zircon
+            <div id="hover-content">SW 7667</div>
+        </div>
+    </div>
+
+    <!-- TRIM Dropdown-->
+    <div class="dropdown-container">
+        <div onclick="showTrim()" class="dropdown" id="dropdownTrim" type="button">Trim <i class="bi bi-arrow-down" style="float:right; margin-right:10px;"></i></div>
+    </div>
+    <!-- TRIM Hidden Element -->
+    <div class="ColourList" id="TrimColourList" style="display:none;">
+
+        <div class="chip" id="chip" style="background-color: #EDEAE0">Alabaster
+            <div id="hover-content">SW 7008</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EFE8DB">Creamy
+            <div id="hover-content">SW 7012</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #F0EADC">Dover White
+            <div id="hover-content">SW 6385</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E2DED8">Eider White
+            <div id="hover-content">SW 7014</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EEEFEA">Extra White
+            <div id="hover-content">SW 7004</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DCDDD8">Fleur de Sel
+            <div id="hover-content">SW 7666</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #F0ECE2">Greek Villa
+            <div id="hover-content">SW 7551</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #F7F7F1">High Reflective White
+            <div id="hover-content">SW 7757</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E3E4E1">Ice Cube
+            <div id="hover-content">SW 6252</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E3DED7">Incredible White
+            <div id="hover-content">SW 7028</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DEDFDC">Nebulous White
+            <div id="hover-content">SW 7063</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E2E0D6">Nuance
+            <div id="hover-content">SW 7049</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E5E2DA">Origami White
+            <div id="hover-content">SW 7636</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #A0998F; color:white">Pavestone
+            <div id="hover-content">SW 7642</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E8E3D9">Pearly White
+            <div id="hover-content">SW 7009</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EDECE6">Pure White
+            <div id="hover-content">SW 7005</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DDE2E0">Quicksilver
+            <div id="hover-content">SW 6245</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #D3D5D3">Reflection
+            <div id="hover-content">SW 7661</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #CCC9C0">Repose Gray
+            <div id="hover-content">SW 7015</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E6DFD3">Shoji White
+            <div id="hover-content">SW 7042</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DCE7E8">Sky High
+            <div id="hover-content">SW 6504</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EDEAE5">Snowbound
+            <div id="hover-content">SW 7004</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E4E4DD">Spare White
+            <div id="hover-content">SW 6203</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #57534C; color:white;">Thunder Gray
+            <div id="hover-content">SW7645</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DED8CF">Windfresh White
+            <div id="hover-content">SW 7628</div>
+        </div>
+
+    </div>
+
+
+    <!-- FRONT DOOR Dropdown-->
+    <div class="dropdown-container">
+        <div onclick="showFRONTDOOR()" class="dropdown" id="dropdownFront" type="button">Front Door <i class="bi bi-arrow-down" style="float:right; margin-right:10px;"></i></div></div>
+    <!-- FRONT DOOR Hidden Element -->
+    <div class="ColourList" id="FrontDoorColourList" style="display:none;">
+
+        <div class="chip" id="chip" style="background-color: #A3C0BD">Aquaverde
+            <div id="hover-content">SW 9051</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #7F8266">Artichoke
+            <div id="hover-content">SQ 6179</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #9A815E">Artifact
+            <div id="hover-content">SW 6179</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C0B2A2">Balanced Beige
+            <div id="hover-content">SQ 7037</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #4F4842; color:white;">Black Fox 
+            <div id="hover-content">SW 7020</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #63333E; color:white;">Burgundy
+            <div id="hover-content">SW 6300</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #7EA298">Composed 
+            <div id="hover-content">SW 6472</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #175A6C; color:white;">Connor's Lakefront 
+            <div id="hover-content">SW 9060</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #753531; color:white;">Crabby Apple
+            <div id="hover-content">SW 7092</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #376167; color:white;">Deep Sea Dive
+            <div id="hover-content">SW 7618</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #ACA79E">Dorian Gray
+            <div id="hover-content">SW 7017</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #8CAEAB">Drizzle
+            <div id="hover-content">SW 6479</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #723941; color:white;">Fine Wine
+            <div id="hover-content">SW 6307</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #786E70; color:white;">Grapy
+            <div id="hover-content">SW 7629</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #8B8372; color:white;">Hardware
+            <div id="hover-content">SW 6172</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #666D69; color:white;">Homburg Gray
+            <div id="hover-content">SW 7622</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #283849; color:white;">In the Navy
+            <div id="hover-content">SW 9178</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #4E7287; color:white;">Inky Blue
+            <div id="hover-content">SW 9149</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #01455E; color:white;">Loyal Blue
+            <div id="hover-content">SW 6510</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #2F3D4C; color:white;">Naval 
+            <div id="hover-content">SW 6244</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #546670; color:white;">Needlepoint Navy
+            <div id="hover-content">SW 0032</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C7B198">Nomadic Desert 
+            <div id="hover-content">SW 6107</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #56433B; color:white;">Otter
+            <div id="hover-content">SW 6041</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #586168; color:white;">Outerspace
+            <div id="hover-content">SW 6251</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #8095A0">Poolhouse
+            <div id="hover-content">SW 7603</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #ADA5A5">Quest Gray 
+            <div id="hover-content">SW 7080</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #016367; color:white;">Really Teal
+            <div id="hover-content">SW 6489</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #8E3738; color:white;">Red Bay
+            <div id="hover-content">SW 6321</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #7BB1B2">Reflecting Pool
+            <div id="hover-content">SW 6486</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #607D84; color:white;">Refuge
+            <div id="hover-content">SW 6228</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #7A8076; color:white;">Retreat
+            <div id="hover-content">SW 6207</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #5D7274; color:white;">Riverway
+            <div id="hover-content">SW 6222</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #5E706A; color:white;">Rocky River
+            <div id="hover-content">SW 6215</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #803532; color:white;">Salute
+            <div id="hover-content">SW 7582</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #3E4B54; color:white;">Sea Serpent
+            <div id="hover-content">SW 7615</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #314D58; color:white;">Seaworthy
+            <div id="hover-content">SW 7620</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #716354; color:white;">Smokehouse
+            <div id="hover-content">SW 7040</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #596E79; color:white;">Smoky Blue
+            <div id="hover-content">SW 7604</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #577C88; color:white;">St Bart's
+            <div id="hover-content">SW 7614</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #6D817B; color:white;">Studio Blue Green
+            <div id="hover-content">SW 0047</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C2CFCF">Tradewind
+            <div id="hover-content">SW 6218</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #7C9AA0">Tranquil Aqua
+            <div id="hover-content">SW 7611</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #2F2F30; color:white;">Tricorn Black
+            <div id="hover-content">SW 6258</div>
+        </div>
+
+    </div>
+
+    <!-- GARAGE Dropdown-->
+    <div class="dropdown-container">
+        <div onclick="showGARAGEDOOR()" class="dropdown" id="dropdownGar" type="button">Garage Doors <i class="bi bi-arrow-down" style="float:right; margin-right:10px;"></i></div></div>
+    <!-- GARAGE DOOR Hidden Element -->
+    <div class="ColourList" id="GarageDoorColourList" style="display:none;">
+
+        <div class="chip" id="chip" style="background-color: #EDEAE0">Alabaster
+            <div id="hover-content">SW 7008</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C0B2A2">Balanced Beige
+            <div id="hover-content">SQ 7037</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #4F4842; color:white;">Black Fox 
+            <div id="hover-content">SW 7020</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EFE8DB">Creamy
+            <div id="hover-content">SW 7012</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #ACA79E">Dorian Gray
+            <div id="hover-content">SQ 7017</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #F0EADC">Dover White
+            <div id="hover-content">SW 6385</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E2DED8">Eider White
+            <div id="hover-content">SW 7014</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EEEFEA">Extra White
+            <div id="hover-content">SW 7004</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DCDDD8">Fleur de Sel
+            <div id="hover-content">SW 7666</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #F0ECE2">Greek Villa
+            <div id="hover-content">SW 7551</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #F7F7F1">High Reflective White
+            <div id="hover-content">#SW 7757</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E3E4E1">Ice Cube
+            <div id="hover-content">SW 6252</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E3DED7">Incredible White
+            <div id="hover-content">SW 7028</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DEDFDC">Nebulous White
+            <div id="hover-content">SW 7063</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #C7B198">Nomadic Desert 
+            <div id="hover-content">SW 6107</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E2E0D6">Nuance
+            <div id="hover-content">SW 7049</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E5E2DA">Origami White
+            <div id="hover-content">SW 7636</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #56433B; color:white;">Otter
+            <div id="hover-content">SW 6041</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #A0998F; color:white">Pavestone
+            <div id="hover-content">SW 7642</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E8E3D9">Pearly White
+            <div id="hover-content">SW 7009</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EDECE6">Pure White
+            <div id="hover-content">SW 7005</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DDE2E0">Quicksilver
+            <div id="hover-content">SW 6245</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #D3D5D3">Reflection
+            <div id="hover-content">SW 7661</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #CCC9C0">Repose Gray
+            <div id="hover-content">SW 7015</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E6DFD3">Shoji White
+            <div id="hover-content">SW 7042</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DCE7E8">Sky High
+            <div id="hover-content">SW 6504</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #EDEAE5">Snowbound
+            <div id="hover-content">SW 7004</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #E4E4DD">Spare White
+            <div id="hover-content">SW 6203</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #57534C; color:white;">Thunder Gray
+            <div id="hover-content">SW7645</div>
+        </div>
+
+        <div class="chip" id="chip" style="background-color: #DED8CF">Windfresh White
+            <div id="hover-content">SW 7628</div>
+        </div>
+    </div>    
+        
+    <div class="button-container">
+        <button class="button" id="visualiser" type="button" onclick="window.location.href = '/visualiser';">Visualiser </button>
+    </div>
+{% endblock %}
